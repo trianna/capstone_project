@@ -9,7 +9,7 @@ require_once ('../../mysqli_connect_capstone.php');
 </div>
 <?php
 echo ("<div style=\"text-align:center\">");
-echo ("<a href=\"add_keyword.php\">Add a record</a><p>");
+echo ("<a href=\"add_keyword.php\">Add a keyword</a><p>");
 echo ("<a href=\"searchform.php\">Search records</a><p>");
 echo ("</div>");
 $query = "SELECT * FROM keyword";
