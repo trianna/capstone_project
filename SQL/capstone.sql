@@ -20,7 +20,6 @@ CREATE TABLE database (
 	provider VARCHAR(255), 
 	PRIMARY KEY (database_id));
 
---unmodified past here
 CREATE TABLE article (
 	article_id INT NOT NULL AUTO_INCREMENT, 
 	title VARCHAR(255),
