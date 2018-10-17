@@ -12,10 +12,29 @@ echo ("<div style=\"text-align:center\">");
 echo ("<a href=\"add.php\">Add a Document</a><p>");
 echo ("<a href=\"searchform.php\">Search records</a><p>");
 echo ("</div>");
+
+//Will this code work for pagination? 10/17/brandon;
+$display = 20;
+if(isset($_GET['p'])&&is_numeric($_GET['p'])) {
+	$pages = $_GET['p'];
+}else{
+$query = "SELECT COUNT(id) FROM bookmark";
+$result = @mysqli_query($dbc, $query);
+$row = @mysqli_fetch_array($result, MYSQL_NUM);
+$records = $row[0];
+if($records > $display) {
+$pages = ceil($records/$display);
+}else{
+	$pages = 1;
+}
+}
+//or should I look into this "https://code.tutsplus.com/tutorials/how-to-paginate-data-with-php--net-2928";
+
 $query = "SELECT * FROM article 
 			JOIN publication ON article.publication_id = publication.publication_id 
 			JOIN article_author ON article.article_id = article_author.article_id
 			JOIN author ON article_author.author_id = author.author_id";
+
 $result = @mysqli_query($dbc, $query);
 $num = mysqli_num_rows($result);
 
@@ -47,5 +66,7 @@ if ($num > 0) {
 }
 
 mysqli_close($dbc);
-include ('includes/footer.inc.html');
+
+include('includes/footer.inc.html');
 ?>
+
