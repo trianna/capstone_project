@@ -56,6 +56,7 @@ CREATE TABLE article (
 	translated_author VARCHAR(255),
 	translated_title VARCHAR(255),
 	article_language VARCHAR(255), 
+	full_text TEXT,
 	PRIMARY KEY (article_id),
 	FOREIGN KEY (database_id) REFERENCES database(database_id), 
 	FOREIGN KEY (publication_id) REFERENCES publication(publication_id),
