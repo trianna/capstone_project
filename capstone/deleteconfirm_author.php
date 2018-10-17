@@ -1,6 +1,7 @@
 <?php
 require_once ('includes/check_session.inc.php'); // check session
 $page_title = 'Delete Confirm';
+include ('includes/header.inc.html');
 include_once ('../../mysqli_connect_final.php');
 echo "<div class=\"page-header\"><h3>Delete Confirm</h3></div>";
 $id = $_GET['id'];
