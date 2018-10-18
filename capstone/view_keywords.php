@@ -5,17 +5,23 @@ include ('includes/header.inc.html');
 require_once ('../../mysqli_connect_capstone.php');
 ?>
 <div class="page-header">
+	<!-- Page header -->
 	<h3>Keywords</h3>
 </div>
 <?php
 echo ("<div style=\"text-align:center\">");
+
+# Adjust page refs and names as needed
 echo ("<a href=\"add_keyword.php\">Add a keyword</a><p>");
 echo ("<a href=\"searchform.php\">Search records</a><p>");
 echo ("</div>");
+
+#		  SELECT * FROM table
 $query = "SELECT * FROM keyword";
 $result = @mysqli_query($dbc, $query);
 $num = mysqli_num_rows($result);
 
+# Make sure to properly adjust table for amount of metadata && table names
 if ($num > 0) {
     echo "<p><b>There are currently $num keywords.</b></p>";
     echo "<table cellpadding=\"5\" cellspacing=\"5\" border=\"1\"> <tr><th scope=\"col\">#</th><td scope=\"col\">KEYWORD</td></th><th><center>*</center></th><th><center>*</center></th></tr>";
