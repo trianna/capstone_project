@@ -20,8 +20,8 @@ CREATE TABLE database (
 	provider VARCHAR(255), 
 	PRIMARY KEY (database_id));
 
-CREATE TABLE article (
-	article_id INT NOT NULL AUTO_INCREMENT, 
+CREATE TABLE document (
+	document_id INT NOT NULL AUTO_INCREMENT, 
 	title VARCHAR(255),
 	database_id INT NOT NULL,
 	publication_id INT NOT NULL,
@@ -31,7 +31,7 @@ CREATE TABLE article (
 	pages SMALLINT,
 	start_page SMALLINT,
 	epub_date DATE,
-	article_type VARCHAR(255),
+	document_type VARCHAR(255),
 	short_title VARCHAR(255),
 	alternate_publication_id INT NOT NULL,
 	DOI VARCHAR(255),
@@ -41,7 +41,7 @@ CREATE TABLE article (
 	legal_note TEXT,
 	PMCID VARCHAR(255),
 	NIHMSID VARCHAR(255),
-	article_number SMALLINT,
+	document_number SMALLINT,
 	accession_number SMALLINT,
 	call_number VARCHAR(255),
 	label VARCHAR(255),
@@ -55,26 +55,26 @@ CREATE TABLE article (
 	access_date DATE,
 	translated_author VARCHAR(255),
 	translated_title VARCHAR(255),
-	article_language VARCHAR(255), 
+	document_language VARCHAR(255), 
 	full_text TEXT,
-	PRIMARY KEY (article_id),
+	PRIMARY KEY (document_id),
 	FOREIGN KEY (database_id) REFERENCES database(database_id), 
 	FOREIGN KEY (publication_id) REFERENCES publication(publication_id),
 	FOREIGN KEY (alternate_publication_id) REFERENCES publication(publication_id),
 	FOREIGN KEY (original_publication_id) REFERENCES publication(publication_id));
 
-CREATE TABLE article_author (
-	article_id INT NOT NULL, 
+CREATE TABLE document_author (
+	document_id INT NOT NULL, 
 	author_id INT NOT NULL, 
-	FOREIGN KEY (article_id) REFERENCES article(article_id), 
+	FOREIGN KEY (document_id) REFERENCES document(document_id), 
 	FOREIGN KEY (author_id) REFERENCES author(author_id)); 
-CREATE TABLE article_collaborator (
-	article_id INT NOT NULL, 
+CREATE TABLE document_collaborator (
+	document_id INT NOT NULL, 
 	collaborator_id INT NOT NULL, 
-	FOREIGN KEY (article_id) REFERENCES article(article_id), 
+	FOREIGN KEY (document_id) REFERENCES document(document_id), 
 	FOREIGN KEY (collaborator_id) REFERENCES author(author_id)); 
-CREATE TABLE article_keyword (
-	article_id INT NOT NULL, 
+CREATE TABLE document_keyword (
+	document_id INT NOT NULL, 
 	keyword_id INT NOT NULL, 
-	FOREIGN KEY (article_id) REFERENCES article(article_id), 
+	FOREIGN KEY (document_id) REFERENCES document(document_id), 
 	FOREIGN KEY (keyword_id) REFERENCES keyword(keyword_id)); 

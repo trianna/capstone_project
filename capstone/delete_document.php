@@ -1,11 +1,11 @@
 <?php
 require_once ('includes/check_session.inc.php'); // check session
-$page_title = "Delete a Record!";
+$page_title = "Delete a Document";
 include ('includes/header.inc.html');
-require_once ('../../mysqli_connect_final.php');
+require_once ('../../mysqli_connect_capstone.php');
 echo "<div class=\"page-header\"><h3>Delete</h3></div>";
 $id = $_GET['id'];
-$query = "DELETE FROM bookmark WHERE id=$id";
+$query = "DELETE FROM document WHERE id=$id";
 $result = mysqli_query($dbc, $query);
 if ($result) {
     echo "The selected record has been deleted.";

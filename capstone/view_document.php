@@ -18,7 +18,7 @@ $display = 20;
 if(isset($_GET['p'])&&is_numeric($_GET['p'])) {
 	$pages = $_GET['p'];
 }else{
-$query = "SELECT COUNT(id) FROM bookmark";
+$query = "SELECT COUNT(id) FROM document";
 $result = @mysqli_query($dbc, $query);
 $row = @mysqli_fetch_array($result, MYSQL_NUM);
 $records = $row[0];
@@ -30,7 +30,7 @@ $pages = ceil($records/$display);
 }
 //or should I look into this "https://code.tutsplus.com/tutorials/how-to-paginate-data-with-php--net-2928";
 
-$query = "SELECT * FROM article 
+$query = "SELECT * FROM document 
 			JOIN publication ON article.publication_id = publication.publication_id 
 			JOIN article_author ON article.article_id = article_author.article_id
 			JOIN author ON article_author.author_id = author.author_id";
