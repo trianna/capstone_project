@@ -1,5 +1,7 @@
 <?php
 require_once ('includes/check_session.inc.php'); // check session
+
+# Title of page
 $page_title = 'Update a Keyword';
 include ('includes/header.inc.html');
 
