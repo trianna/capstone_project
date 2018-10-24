@@ -1,0 +1,71 @@
+<html>
+<link href="style.css" rel="stylesheet"/>
+<div class="dropdown">
+  <button onclick="myFunction()" class="dropbtn">Dropdown</button>
+  <div id="myDropdown" class="dropdown-content">
+    <input type="text" placeholder="Search.." id="myInput" onkeyup="filterFunction()">
+
+    <a href="#abstract">Abstract</a>
+    <a href="#access date">Access Date</a>
+    <a href="#accession number">Accession Number</a>
+    <a href="#alternate journal">Alternate Journal</a>
+    <a href="#article number">Article Number</a>
+    <a href="#author">Author</a>
+    <a href="#author address">Author Address</a>
+    <a href="#call number">Call Number</a>
+    <a href="#caption">Caption</a>
+    <a href="#database provider">Database Provider</a>
+    <a href="#Date">Date</a>
+    <a href="#DOI">DOI</a>
+    <a href="#Epub date">Epub Date</a>
+    <a href="#Figure">Figure</a>
+    <a href="#file attachments">File Attachments</a>
+    <a href="#issn">ISSN</a>
+    <a href="#issue">Issue</a>
+    <a href="#journal">Journal</a>
+    <a href="#keywords">Keywords</a>
+    <a href="#lable">Label</a>
+    <a href="#language">Language</a>
+    <a href="#legal note">Legal Note</a>
+    <a href="#name of database">Name of Database</a>
+    <a href="#nihmsid">NIHMSID</a>
+    <a href="#notes">Notes</a>
+    <a href="#original publication">Originial Publication</a>
+    <a href="#pages">Pages</a>
+    <a href="#pmcid">PMCID</a>
+    <a href="#reprint edition">Reprint Edition</a>
+    <a href="#research notes">Research Notes</a>
+    <a href="#reviewed notes">Reviewed Notes</a>
+    <a href="#short title">Short Title</a>
+    <a href="#start page">Start Page</a>
+    <a href="#title">Title</a>
+    <a href="#translated author">Translated Author</a>
+    <a href="#translated title">Translated Title</a>
+    <a href="#type of article">Type of Article</a>
+    <a href="#url">URL</a>
+    <a href="#volume">Volume</a>
+    <a href="#year">Year</a>
+  </div>
+</div>
+</body>
+</html>
+<script>
+function myFunction() {
+  document.getElementById("myDropdown").classList.toggle("show");
+}
+
+function filterFunction() {
+  var input, filter, ul, li, a, i;
+  input = document.getElementById("myInput");
+  filter = input.value.toUpperCase();
+  div = document.getElementById("myDropdown");
+  a = div.getElementsByTagName("a");
+  for (i = 0; i < a.length; i++) {
+    if (a[i].innerHTML.toUpperCase().indexOf(filter) > -1) {
+      a[i].style.display = "";
+    } else {
+      a[i].style.display = "none";
+    }
+  }
+}
+</script>
