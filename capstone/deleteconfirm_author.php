@@ -1,6 +1,7 @@
 <?php
+# Finished by @pmwright 10/18/2018
 require_once ('includes/check_session.inc.php'); // check session
-$page_title = 'Confirm Author Delte';
+$page_title = 'Confirm Author Delete';
 include_once ('../../mysqli_connect_capstone.php');
 echo "<div class=\"page-header\"><h3>Delete Confirm</h3></div>";
 $id = $_GET['id'];
