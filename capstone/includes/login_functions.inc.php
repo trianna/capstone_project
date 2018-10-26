@@ -1,5 +1,7 @@
 <?php
 
+$salt = '$2a$12$wQaOjNK9/3jyQVSkcNsdY.IBGf9.q2fq4EMvH6u5buen9hvs8EBIC';
+
 // validates entered data
 function check_login($dbc, $email = '', $pass = '')
 {
@@ -18,7 +20,7 @@ function check_login($dbc, $email = '', $pass = '')
     }
     if (empty($errors)) {
         // retrive the user_id and first_name for that email/pass combo
-        $q = "SELECT user_id, first_name FROM users WHERE email='$e' AND pass = SHA2 ('$p', 512)";
+        $q = "SELECT user_id, first_name FROM users WHERE email='$e' AND pass = crypt ('$p', $salt)";
         $r = @mysqli_query($dbc, $q);
         if (mysqli_num_rows($r) == 1) {
             $row = mysqli_fetch_array($r, MYSQLI_ASSOC);

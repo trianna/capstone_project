@@ -1,6 +1,8 @@
 <?php
 $page_title = "Register a new user";
 include ('includes/login.header.inc.html'); // include header
+
+$salt = '$2a$12$wQaOjNK9/3jyQVSkcNsdY.IBGf9.q2fq4EMvH6u5buen9hvs8EBIC';
                                             // Check if the form has been submitted.
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $errors = []; // Initialize an error array.
@@ -41,7 +43,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         if (mysqli_num_rows($result) == 0) { // if there is no such email address
                                              // Make the query.
             $query = "INSERT INTO users (first_name, last_name, email, pass, registration_date) 
-			VALUES ('$first_name', '$last_name', '$email', SHA2('$password', 512), NOW() )";
+			VALUES ('$first_name', '$last_name', '$email', crypt('$password', $salt), NOW() )";
             $result = @mysqli_query($dbc, $query); // Run the query.
             if ($result) { // If it ran OK.
                 echo "<p>You are now registered. Please, login to use our great service.</p>";

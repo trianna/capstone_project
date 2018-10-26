@@ -3,7 +3,7 @@
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     // need two helper files
     require ('includes/login_functions.inc.php');
-    require ('../../mysqli_connect_final.php');
+    require ('../../mysqli_connect_capstone.php');
     // check the login
     list ($check, $data) = check_login($dbc, $_POST['email'], $_POST['pass']);
     mysqli_close($dbc); // close dbc

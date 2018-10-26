@@ -49,7 +49,7 @@ if (isset($_POST['submitted'])) {
     $result = @mysqli_query($dbc, $query);
     if ($result) {
         echo "<p><b>A new article has been added.</b></p>";
-        echo "<a href=\"bookmark.php\">Show all books</a>";
+        echo "<a href=\"view_document.php\">Show all documents</a>";
     } else {
         echo "<p>The record could not be added due to a system error" . mysqli_error($dbc) . "</p>";
     }
