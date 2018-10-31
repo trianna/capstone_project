@@ -41,23 +41,88 @@ $num = mysqli_num_rows($result);
 if ($num > 0) {
     echo "<p><b>There are currently $num entries.</b></p>";
     echo "<table cellpadding=\"5\" cellspacing=\"5\" border=\"1\"><tr>
+
+			<th scope=\"col\">Title</th>
 			<th scope=\"col\">TYPE</th>
-			<th scope=\"col\">TITLE</th>
-			<th scope=\"col\">AUTHOR</th>
-			<th scope=\"col\">YEAR</th>
+			<th scope=\"col\">Authors</th>
+			<th scope=\"col\">Pub. Date</th>
 			<th scope=\"col\">PUBLICATION</th>
+			<th scope=\"col\">VOLUME</th>
+			<th scope=\"col\">ISSUE</th>
+			<th scope=\"col\">PAGES</th>
+			<th scope=\"col\">START PAGE</th>
+			<th scope=\"col\">EPUB DATE</th>
+			<th scope=\"col\">SHORT TITLE</th>
+			<th scope=\"col\">ALT. PUB.</th>
+			<th scope=\"col\">DOI</th>
+			<th scope=\"col\">ORIGINAL PUB.</th>
+			<th scope=\"col\">REPRINT ED.</th>
 			<th scope=\"col\">REVIEWED</th>
+			<th scope=\"col\">LEGAL NOTE</th>
+			<th scope=\"col\">PMCID</th>
+			<th scope=\"col\">NIHMSID</th>
+			<th scope=\"col\">DOCUMENT NUMBER</th>
+			<th scope=\"col\">ACCESSION NUMBER</th>
+			<th scope=\"col\">CALL NUMBER</th>
+			<th scope=\"col\">LABEL</th>
+			<th scope=\"col\">ABSTRACT</th>
+			<th scope=\"col\">NOTES</th>
+			<th scope=\"col\">RESEARCH NOTES</th>
+			<th scope=\"col\">URL</th>
+			<th scope=\"col\">FILE ATTACHMENT PATH</th>
+			<th scope=\"col\">FIGURE</th>
+			<th scope=\"col\">CAPTION</th>
+			<th scope=\"col\">ACCESS DATE</th>
+			<th scope=\"col\">TRANSLATED AUTHOR</th>
+			<th scope=\"col\">TRANSLATED TITLE</th>
+			<th scope=\"col\">DOCUMENT LANGUAGE</th>
+			<th scope=\"col\">FULL TEXT</th>
+
+			<th scope=\"col\">DELETE</th>
+			<th scope=\"col\">UPDATE</th>
+			
+
 			<th><center>*</center></th>
 			<th><center>*</center></th></tr>";
     while ($row = mysqli_fetch_array($result, MYSQL_ASSOC)) {
         echo "<tr scope=\"row\"><td>" . $row['article.title'] . "</td>";
         echo "<td>" . $row['article_type'] . "</td>";
-        echo "<td><a href=\"view_authors.php?id=" . $row['article_id'] . "\">View Authors</a>";
-        echo "<td>" . $row['year'] . "</td>";
+        echo "<td><a href=\"view_authors.php?id=" . $row['document_id'] . "\">View Authors</a>";
+        echo "<td>" . $row['publication_date'] . "</td>";
         echo "<td>" . $row['publication.title'] . "</td>";
+        echo "<td>" . $row['volume'] . "</td>";
+        echo "<td>" . $row['issue'] . "</td>";
+        echo "<td>" . $row['pages'] . "</td>";
+        echo "<td>" . $row['start_page'] . "</td>";
+        echo "<td>" . $row['epub_date'] . "</td>";
+        echo "<td>" . $row['short_title'] . "</td>";
+        echo "<td>" . $row['alternate_publication_id'] . "</td>";
+        echo "<td>" . $row['DOI'] . "</td>";
+        echo "<td>" . $row['original_publication_id'] . "</td>";
+        echo "<td>" . $row['reprint_edition'] . "</td>";
         echo "<td>" . $row['reviewed_item'] . "</td>";
-        echo "<td><a href=\"deleteconfirm.php?id=" . $row['article_id'] . "\">Delete</a></td>";
-        echo "<td><a href=\"updateform.php?id=" . $row['article_id'] . "\">Update</a></td></tr>";
+        echo "<td>" . $row['legal_note'] . "</td>";
+        echo "<td>" . $row['PMCID'] . "</td>";
+        echo "<td>" . $row['NIHMSID'] . "</td>";
+        echo "<td>" . $row['document_number'] . "</td>";
+        echo "<td>" . $row['accession_number'] . "</td>";
+        echo "<td>" . $row['call_number'] . "</td>";
+        echo "<td>" . $row['label'] . "</td>";
+        echo "<td>" . $row['abstract'] . "</td>";
+        echo "<td>" . $row['notes'] . "</td>";
+        echo "<td>" . $row['research_notes'] . "</td>";
+        echo "<td>" . $row['URL'] . "</td>";
+        echo "<td>" . $row['file_attachment_path'] . "</td>";
+        echo "<td>" . $row['figure'] . "</td>";
+        echo "<td>" . $row['caption'] . "</td>";
+        echo "<td>" . $row['access_date'] . "</td>";
+        echo "<td>" . $row['translated_author'] . "</td>";
+        echo "<td>" . $row['translated_title'] . "</td>";
+        echo "<td>" . $row['document_language'] . "</td>";
+        echo "<td>" . $row['full_text'] . "</td>";
+        
+        echo "<td><a href=\"deleteconfirm_document.php?id=" . $row['article_id'] . "\">Delete</a></td>";
+        echo "<td><a href=\"update_document_form.php?id=" . $row['article_id'] . "\">Update</a></td></tr>";
     }
     echo "</table>";
     mysqli_free_result($result); // frees memory

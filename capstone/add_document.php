@@ -9,6 +9,8 @@ require_once ('../../mysqli_connect_capstone.php');
 </div>
 <?php
 if (isset($_POST['submitted'])) {
+	$author_id = mysqli_real_escape_string($dbc, $_POST['author_id']);
+	
     $title = mysqli_real_escape_string($dbc, $_POST['title']);
     $database_id = mysqli_real_escape_string($dbc, $_POST['database_id']);
     $publication_id = mysqli_real_escape_string($dbc, $_POST['publication_id']);
@@ -45,13 +47,16 @@ if (isset($_POST['submitted'])) {
     $translated_title = mysqli_real_escape_string($dbc, $_POST['translated_title']);
     $aricle_language = mysqli_real_escape_string($dbc, $_POST['article_language']);
     
-    $query = "INSERT INTO article VALUES ('$title', '$author', '$date_published', '$pages', '$isbn13')";
+    $query = "INSERT INTO document VALUES ('$title', '$database_id', '$publication_id', '$publication_date', '$volume', '$issue', '$pages', '$start_page', 
+'$epub_date', '$date', '$artiicle_type', '$short_title', '$alternate_publication_id', '$doi', '$original_publication_id', '$reprint_edition', '$reviewed_item', 
+'$legal_note', '$pmcid', '$nihmsid', '$article_number', '$accession_number', '$call_number', '$label', '$abstract', '$notes', '$research_notes', 
+'$url', '$file_attachment_path', '$figure', '$caption', '$access_date', '$translated_author', '$translated_title', '$aricle_language')";
     $result = @mysqli_query($dbc, $query);
     if ($result) {
         echo "<p><b>A new article has been added.</b></p>";
         echo "<a href=\"view_document.php\">Show all documents</a>";
     } else {
-        echo "<p>The record could not be added due to a system error" . mysqli_error($dbc) . "</p>";
+        echo "<p>The document could not be added due to a system error" . mysqli_error($dbc) . "</p>";
     }
 }
 // form runs first
@@ -69,17 +74,139 @@ mysqli_close($dbc);
 			name="author" type="text" class="form-control">
 	</div>
 	<div class="form-group">
-		<label class="col-form-label" for="inputDefault">Year</label> <input
-			name="date_published" type="text" class="form-control">
+		<label class="col-form-label" for="inputDefault">publication_id</label> <input
+			name="publication_id" type="text" class="form-control">
 	</div>
 	<div class="form-group">
-		<label class="col-form-label" for="inputDefault">Number of Pages</label>
-		<input name="pages" type="text" class="form-control">
+		<label class="col-form-label" for="inputDefault">publication_date</label>
+		<input name="publication_date" type="text" class="form-control">
 	</div>
 	<div class="form-group">
-		<label class="col-form-label" for="inputDefault">ISBN-13</label> <input
-			name="isbn13" type="text" class="form-control">
+		<label class="col-form-label" for="inputDefault">volume</label> <input
+			name="volume" type="text" class="form-control">
 	</div>
+	<div class="form-group">
+		<label class="col-form-label" for="inputDefault">issue</label> <input
+			name="issue" type="text" class="form-control">
+	</div>
+	<div class="form-group">
+		<label class="col-form-label" for="inputDefault">pages</label> <input
+			name="pages" type="text" class="form-control">
+	</div>
+	<div class="form-group">
+		<label class="col-form-label" for="inputDefault">start_page</label> <input
+			name="start_page" type="text" class="form-control">
+	</div>
+	<div class="form-group">
+		<label class="col-form-label" for="inputDefault">epub_date</label> <input
+			name="epub_date" type="text" class="form-control">
+	</div>
+	<div class="form-group">
+		<label class="col-form-label" for="inputDefault">document_type</label> <input
+			name="document_type" type="text" class="form-control">
+	</div>
+	<div class="form-group">
+		<label class="col-form-label" for="inputDefault">short_title</label> <input
+			name="short_title" type="text" class="form-control">
+	</div>
+	<div class="form-group">
+		<label class="col-form-label" for="inputDefault">alternate_publication_id</label> <input
+			name="alternate_publication_id" type="text" class="form-control">
+	</div>
+	<div class="form-group">
+		<label class="col-form-label" for="inputDefault">DOI</label> <input
+			name="DOI" type="text" class="form-control">
+	</div>
+	<div class="form-group">
+		<label class="col-form-label" for="inputDefault">original_publication_id</label> <input
+			name="original_publication_id" type="text" class="form-control">
+	</div>
+	<div class="form-group">
+		<label class="col-form-label" for="inputDefault">reprint_edition</label> <input
+			name="reprint_edition" type="text" class="form-control">
+	</div>
+	<div class="form-group">
+		<label class="col-form-label" for="inputDefault">reviewed_item</label> <input
+			name="reviewed_item" type="text" class="form-control">
+	</div>
+	<div class="form-group">
+		<label class="col-form-label" for="inputDefault">legal_note</label> <input
+			name="legal_note" type="text" class="form-control">
+	</div><div class="form-group">
+		<label class="col-form-label" for="inputDefault">PMCID</label> <input
+			name="PMCID" type="text" class="form-control">
+	</div>
+	<div class="form-group">
+		<label class="col-form-label" for="inputDefault">NIHMSID</label> <input
+			name="NIHMSID" type="text" class="form-control">
+	</div>
+	<div class="form-group">
+		<label class="col-form-label" for="inputDefault">document_number</label> <input
+			name="document_number" type="text" class="form-control">
+	</div>
+	<div class="form-group">
+		<label class="col-form-label" for="inputDefault">accession_number</label> <input
+			name="accession_number" type="text" class="form-control">
+	</div>
+	<div class="form-group">
+		<label class="col-form-label" for="inputDefault">call_number</label> <input
+			name="call_number" type="text" class="form-control">
+	</div>
+	<div class="form-group">
+		<label class="col-form-label" for="inputDefault">label</label> <input
+			name="label" type="text" class="form-control">
+	</div>
+	<div class="form-group">
+		<label class="col-form-label" for="inputDefault">abstract</label> <input
+			name="abstract" type="text" class="form-control">
+	</div>
+	<div class="form-group">
+		<label class="col-form-label" for="inputDefault">notes</label> <input
+			name="notes" type="text" class="form-control">
+	</div>
+	<div class="form-group">
+		<label class="col-form-label" for="inputDefault">research_notes</label> <input
+			name="research_notes" type="text" class="form-control">
+	</div>
+	<div class="form-group">
+		<label class="col-form-label" for="inputDefault">URL</label> <input
+			name="URL" type="text" class="form-control">
+	</div>
+	<div class="form-group">
+		<label class="col-form-label" for="inputDefault">file_attachment_path</label> <input
+			name="file_attachment_path" type="text" class="form-control">
+	</div>
+	<div class="form-group">
+		<label class="col-form-label" for="inputDefault">figure</label> <input
+			name="figure" type="text" class="form-control">
+	</div>
+	<div class="form-group">
+		<label class="col-form-label" for="inputDefault">caption</label> <input
+			name="caption" type="text" class="form-control">
+	</div>
+	<div class="form-group">
+		<label class="col-form-label" for="inputDefault">access_date</label> <input
+			name="access_date" type="text" class="form-control">
+	</div>
+	<div class="form-group">
+		<label class="col-form-label" for="inputDefault">translated_author</label> <input
+			name="translated_author" type="text" class="form-control">
+	</div>
+	<div class="form-group">
+		<label class="col-form-label" for="inputDefault">translated_title</label> <input
+			name="translated_title" type="text" class="form-control">
+	</div>
+	<div class="form-group">
+		<label class="col-form-label" for="inputDefault">document_language</label> <input
+			name="document_language" type="text" class="form-control">
+	</div>
+	<div class="form-group">
+		<label class="col-form-label" for="inputDefault">full_text</label> <input
+			name="full_text" type="text" class="form-control">
+	</div>
+	
+	
+	
 
 	<p>
 		<button type="submit" class="btn btn-primary btn-sm" name="submit"

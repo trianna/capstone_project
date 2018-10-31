@@ -14,7 +14,7 @@ CREATE TABLE keyword (
 	keyword_id INT NOT NULL AUTO_INCREMENT, 
 	keyword_term VARCHAR(255), 
 	PRIMARY KEY (keyword_id));
-CREATE TABLE database (
+CREATE TABLE database_info (
 	database_id INT NOT NULL AUTO_INCREMENT, 
 	name VARCHAR(255), 
 	provider VARCHAR(255), 
@@ -58,7 +58,7 @@ CREATE TABLE document (
 	document_language VARCHAR(255), 
 	full_text TEXT,
 	PRIMARY KEY (document_id),
-	FOREIGN KEY (database_id) REFERENCES database(database_id), 
+	FOREIGN KEY (database_id) REFERENCES database_info(database_id), 
 	FOREIGN KEY (publication_id) REFERENCES publication(publication_id),
 	FOREIGN KEY (alternate_publication_id) REFERENCES publication(publication_id),
 	FOREIGN KEY (original_publication_id) REFERENCES publication(publication_id));
@@ -78,3 +78,14 @@ CREATE TABLE document_keyword (
 	keyword_id INT NOT NULL, 
 	FOREIGN KEY (document_id) REFERENCES document(document_id), 
 	FOREIGN KEY (keyword_id) REFERENCES keyword(keyword_id)); 
+	
+CREATE TABLE users (
+    user_id MEDIUMINT(9),
+    first_name VARCHAR(20),
+    last_name VARCHAR(40),
+    email VARCHAR(60),
+    pass BINARY(60),
+    registration_date datetime,
+    PRIMARY KEY (user_id));
+    
+    
