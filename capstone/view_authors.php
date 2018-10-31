@@ -17,11 +17,22 @@ $num = mysqli_num_rows($result);
 if ($num > 0)
 {
     echo "<p><b>There are currently $num authors.</b></p>";
-    echo"<table cellpadding=\"5\" cellspacing=\"5\" border=\"1\"> <tr><th scope=\"col\">#</th><td scope=\"col\">AUTHOR</td></th><th><center>*</center></th><th><center>*</center></th></tr>";
+    echo"<table cellpadding=\"5\" cellspacing=\"5\" border=\"1\">";
+    
+	echo "<tr><th scope=\"col\">ID</th>
+		<td scope=\"col\">First Name</td></th>
+		<th scope=\"col\">M.I.</th>
+		<th scope=\"col\">Last Name</th>
+		<th scope=\"col\">Address</th>";
+	
+	echo "<th><center>*</center></th><th><center>*</center></th></tr>";
     while ($row = mysqli_fetch_array($result, MYSQL_ASSOC))
     {
         echo "<tr scope=\"row\"><td>".$row['author_id']."</td>";
-        echo "<td>".$row['author_term']."</td>";
+        echo "<td>".$row['first_name']."</td>";
+        echo "<td>".$row['middle_initial']."</td>";
+        echo "<td>".$row['last_name']."</td>";
+        echo "<td>".$row['addresss']."</td>";
         echo "<td><a href=\"deleteconfirm_author.php?id=".$row['author_id']."\">Delete</a></td>";
         echo "<td><a href=\"update_author_form.php?id=".$row['author_id']."\">Update</a></td></tr>";
     }

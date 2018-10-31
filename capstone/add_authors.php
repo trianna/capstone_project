@@ -9,8 +9,14 @@ require_once('../../mysqli_connect_capstone.php');
 <?php
 if (isset($_POST['submitted']))
 {
-    $author = mysqli_real_escape_string($dbc, $_POST['author']);
-    $query = "INSERT OR IGNORE INTO author (author_term) VALUES ('$author')";
+	# Write vars from from POST
+    $first_name = mysqli_real_escape_string($dbc, $_POST['first_name']);
+    $middle_initial = mysqli_real_escape_string($dbc, $_POST['middle_initial']);
+    $last_name = mysqli_real_escape_string($dbc, $_POST['last_name']);
+    $address = mysqli_real_escape_string($dbc, $_POST['address']);
+    
+    # Insert data in to database
+    $query = "INSERT OR IGNORE INTO author (first_name, middle_initial, last_name, address) VALUES ('$first_name', '$middle_initial', '$last_name', '$address')";
     $result = @mysqli_query($dbc, $query);
     if ($result)
     {
@@ -29,8 +35,17 @@ mysqli_close($dbc);
 <form action="add_author.php" method="POST">
 
     <div class="form-group">
-      <label class="col-form-label" for="inputDefault">Author</label>
-      <input name="author" type="text" class="form-control">
+      <label class="col-form-label" for="inputDefault">First Name</label>
+      <input name="first_name" type="text" class="form-control">
+      
+      <label class="col-form-label" for="inputDefault">Middle Initial</label>
+      <input name="middle_initial" type="text" class="form-control">
+      
+      <label class="col-form-label" for="inputDefault">Last Name</label>
+      <input name="last_name" type="text" class="form-control">
+      
+      <label class="col-form-label" for="inputDefault">Address</label>
+      <input name="address" type="text" class="form-control">
     </div>
 
     <p><button type="submit" class="btn btn-success btn-sm" name="submit" value="Login">Submit</button>

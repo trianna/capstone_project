@@ -11,7 +11,7 @@ require_once ('../../mysqli_connect_capstone.php');
 <div
 	style="display: flex; flex-direction: column; justify-content: center; align-items: center;">
 
-	<button onclick="location.href='#'" type="button"
+	<button onclick="location.href=''" type="button"
 		class="btn btn-outline-primary btn-lg btn-block">Add Document (coming
 		soon)</button>
 	<button onclick="location.href='#'" type="button"
