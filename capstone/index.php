@@ -23,8 +23,6 @@ require_once ('../../mysqli_connect_capstone.php');
 		class="btn btn-outline-primary btn-lg btn-block">View Keywords</button>
 </div>
 
-
-
 <?php
 include ('includes/footer.inc.html');
 ?>

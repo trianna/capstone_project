@@ -4,7 +4,7 @@ include('includes/login.header.inc.html');  //include header
 // Check if the form has been submitted.
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 	$errors = []; // Initialize an error array.
-    require_once('../../mysqli_connect_final.php');  //connect to database
+    require_once('../../mysqli_connect_capstone.php');  //connect to database
 	// Check for a first name.
 	if (empty($_POST['first_name'])) {
 		$errors[] = 'You forgot to enter your first name.';
