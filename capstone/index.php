@@ -11,26 +11,29 @@ require_once ('../../mysqli_connect_capstone.php');
 <div
 	style="display: flex; flex-direction: column; justify-content: center; align-items: center;">
 
-	<button onclick="location.href='#'" type="button"
+	<button onclick="location.href='add_document.php'" type="button"
 		class="btn btn-outline-primary btn-lg btn-block">Add Document</button>
-	<button onclick="location.href='#'" type="button"
+	<button onclick="location.href='view_document.php'" type="button"
+		class="btn btn-outline-primary btn-lg btn-block">View Documents</button>
+	<button onclick="location.href='searchform.php'" type="button"
 		class="btn btn-outline-primary btn-lg btn-block">Search Documents</button>
+		
 	<button onclick="location.href='add_authors.php'" type="button"
-		class="btn btn-outline-primary btn-lg btn-block">Add Author</button>
+		class="btn btn-outline-success btn-lg btn-block">Add Author</button>
 	<button onclick="location.href='view_authors.php'" type="button"
-		class="btn btn-outline-primary btn-lg btn-block">View Authors</button>
+		class="btn btn btn-outline-success btn-lg btn-block">View Authors</button>
 		
 	<button onclick="location.href='add_database.php'" type="button"
-		class="btn btn-outline-primary btn-lg btn-block">Add Database</button>
+		class="btn btn-outline-info btn-lg btn-block">Add Database</button>
 	<button onclick="location.href='view_database.php'" type="button"
-		class="btn btn-outline-primary btn-lg btn-block">View Databases</button>
+		class="btn btn-outline-info btn-lg btn-block">View Databases</button>
 		
 	<button onclick="location.href='add_keyword.php'" type="button"
-		class="btn btn-outline-primary btn-lg btn-block">Add Keyword</button>
+		class="btn btn-outline-warning btn-lg btn-block">Add Keyword</button>
 	<button onclick="location.href='view_keywords.php'" type="button"
-		class="btn btn-outline-primary btn-lg btn-block">View Keywords</button>
+		class="btn btn-outline-warning btn-lg btn-block">View Keywords</button>
 </div>
-
+</br>
 <?php
 include ('includes/footer.inc.html');
 ?>

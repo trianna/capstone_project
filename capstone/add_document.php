@@ -3,7 +3,11 @@ require_once ('includes/check_session.inc.php'); // check session
 $page_title = 'Add a document!';
 include ('includes/header.inc.html');
 require_once ('../../mysqli_connect_capstone.php');
+ 
 ?>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
 <div class="page-header">
 	<h3>Add a document</h3>
 </div>
@@ -63,16 +67,45 @@ if (isset($_POST['submitted'])) {
 mysqli_close($dbc);
 ?>
 
-<form action="add.php" method="POST">
+<script>
+$(document).ready(function(){
+	$("#show").click(function(){
+	    $("#form1").toggle();
+	    $("#show").prop('value', 'Save');
+	});
+});
+</script>
+
+<button class="btn btn-primary btn-sm" id="show">Hide</button>
+
+
+<form id="form1" action="add_document.php" method="POST">
 
 	<div class="form-group">
 		<label class="col-form-label" for="inputDefault">Title</label> <input
 			name="title" type="text" class="form-control">
 	</div>
+	<!--  
 	<div class="form-group">
 		<label class="col-form-label" for="inputDefault">Author</label> <input
 			name="author" type="text" class="form-control">
 	</div>
+	-->		
+	<!--  add author iframe  -->
+	
+	<iframe src="add_authors.php" height="500" width="100%" ></iframe>
+	<p>This is IFrame</p>
+	    <button onclick="displayIframe()">Click me</button>
+	  <div id="iframeDisplay"></div>  
+	
+	<script>
+	    function displayIframe() {
+	        document.getElementById("iframeDisplay").innerHTML = "<iframe src=\"add_authors.php\" height=\"200\" width=\"300\" ></iframe>";
+	
+	    }
+	</script>
+		
+	
 	<div class="form-group">
 		<label class="col-form-label" for="inputDefault">publication_id</label> <input
 			name="publication_id" type="text" class="form-control">

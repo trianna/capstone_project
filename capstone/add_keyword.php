@@ -10,7 +10,7 @@ require_once ('../../mysqli_connect_capstone.php');
 <?php
 if (isset($_POST['submitted'])) {
     $keyword = mysqli_real_escape_string($dbc, $_POST['keyword']);
-    $query = "INSERT OR IGNORE INTO keyword (keyword_term) VALUES ('$keyword')";
+    $query = "INSERT IGNORE INTO keyword (keyword_term) VALUES ('$keyword')";
     $result = @mysqli_query($dbc, $query);
     if ($result) {
         echo "<p><b>A new keyword has been added.</b></p>";

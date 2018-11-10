@@ -9,7 +9,7 @@ require_once ('../../mysqli_connect_capstone.php');
 </div>
 <?php
 echo ("<div style=\"text-align:center\">");
-echo ("<a href=\"add.php\">Add a Document</a><p>");
+echo ("<a href=\"add_document.php\">Add a Document</a><p>");
 echo ("<a href=\"searchform.php\">Search records</a><p>");
 echo ("</div>");
 
