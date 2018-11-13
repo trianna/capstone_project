@@ -6,9 +6,18 @@ require_once('../../mysqli_connect_capstone.php');
 echo"<div class=\"page-header\"><h3>Updated</h3></div>";
 
 $id = mysqli_real_escape_string($dbc, $_POST['id']);
-$term = mysqli_real_escape_string($dbc, $_POST['term']);
+$first_name = mysqli_real_escape_string($dbc, $_POST['first']);
+$middle_initial = mysqli_real_escape_string($dbc, $_POST['middle']);
+$last_name = mysqli_real_escape_string($dbc, $_POST['last']);
+$address = mysqli_real_escape_string($dbc, $_POST['address']);
 
-$query = "UPDATE author SET author_term='$term' WHERE author_id='$id'";
+$query = "UPDATE author SET first_name='$first_name' WHERE author_id='$id'";
+$result = @mysqli_query($dbc, $query);
+$query = "UPDATE author SET middle_initial='$middle_initial' WHERE author_id='$id'";
+$result = @mysqli_query($dbc, $query);
+$query = "UPDATE author SET last_name='$last_name' WHERE author_id='$id'";
+$result = @mysqli_query($dbc, $query);
+$query = "UPDATE author SET address='$address' WHERE author_id='$id'";
 $result = @mysqli_query($dbc, $query);
 if ($result)
 {

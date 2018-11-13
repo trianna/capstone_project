@@ -1,5 +1,5 @@
 <?php
-
+ 
 require_once('includes/check_session.inc.php'); //check session
 $page_title = 'Add a author';
 include('includes/header.inc.html');
@@ -14,7 +14,7 @@ if (isset($_POST['submitted']))
     $middle_initial = mysqli_real_escape_string($dbc, $_POST['middle_initial']);
     $last_name = mysqli_real_escape_string($dbc, $_POST['last_name']);
     $address = mysqli_real_escape_string($dbc, $_POST['address']);
-    
+
     # Insert data in to database
     $query = "INSERT OR IGNORE INTO author (first_name, middle_initial, last_name, address) VALUES ('$first_name', '$middle_initial', '$last_name', '$address')";
     $result = @mysqli_query($dbc, $query);
@@ -37,13 +37,13 @@ mysqli_close($dbc);
     <div class="form-group">
       <label class="col-form-label" for="inputDefault">First Name</label>
       <input name="first_name" type="text" class="form-control">
-      
+
       <label class="col-form-label" for="inputDefault">Middle Initial</label>
       <input name="middle_initial" type="text" class="form-control">
-      
+
       <label class="col-form-label" for="inputDefault">Last Name</label>
       <input name="last_name" type="text" class="form-control">
-      
+
       <label class="col-form-label" for="inputDefault">Address</label>
       <input name="address" type="text" class="form-control">
     </div>

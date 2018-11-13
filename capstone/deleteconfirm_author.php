@@ -13,7 +13,10 @@ if($num>0)
     while($row=mysqli_fetch_array($result, MYSQL_ASSOC))
     {
         echo "<p><b>".$row['author_id']."</br></p>";
-        echo "<p><b>".$row['author_term']."</br></p>";
+        echo "<p><b>".$row['author_first_name']."</br></p>";
+        echo "<p><b>".$row['author_middle_initial']."</br></p>";
+        echo "<p><b>".$row['author_last_name']."</br></p>";
+        echo "<p><b>".$row['author_address']."</br></p>";
     }
     echo "<p>Are you sure that you want to delete this author?</p>";
     echo "<a href=\"delete_author.php?id=".$id."\"> YES </a><a href=\"view_authors.php\"> NO </a>";
