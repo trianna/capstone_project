@@ -14,13 +14,13 @@ if ($num > 0)
     {
         ?>
         <form action="update_author.php" method="post">
-            Author: <input name="term" size=50 value="<?php echo $middle_initial['first_name']; ?>"><br/>
-            <input name="term" size=50 value="<?php echo $middle_initial['middle_initial']; ?>"><br/>
-            <input name="term" size=50 value="<?php echo $last_name['last_name']; ?>"><br/>
-            <input name="term" size=50 value="<?php echo $address['address']; ?>"><br/>
+            Author: <input name="term" size=50 value="<?php echo $row['first_name']; ?>"><br/>
+            <input name="term" size=50 value="<?php echo $row['middle_initial']; ?>"><br/>
+            <input name="term" size=50 value="<?php echo $row['last_name']; ?>"><br/>
+            <input name="term" size=50 value="<?php echo $row['address']; ?>"><br/>
             <input type="submit" value="update">
             <input type="reset" value="reset">
-            <input type="hidden" name="id" value="<?php echo $id['author_id'];?>">
+            <input type="hidden" name="id" value="<?php echo $row['author_id'];?>">
         </form>
 <?php
     }
