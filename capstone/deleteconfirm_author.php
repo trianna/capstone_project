@@ -12,7 +12,7 @@ if($num>0)
 {
     while($row=mysqli_fetch_array($result, MYSQL_ASSOC))
     {
-        echo "<p><b>".$row['id']."</br></p>";
+        echo "<p><b>".$row['author_id']."</br></p>";
         echo "<p><b>".$row['first_name']."</br></p>";
         echo "<p><b>".$row['middle_initial']."</br></p>";
         echo "<p><b>".$row['last_name']."</br></p>";
